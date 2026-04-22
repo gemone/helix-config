@@ -1,0 +1,239 @@
+{
+  "function": {
+    "prefix": "fn",
+    "body": [
+      "function ${1:name}(${2:args}): ${3:void} {",
+      "  ${4:return null;}",
+      "}"
+    ],
+    "description": "TypeScript function"
+  },
+  "arrow function": {
+    "prefix": "arrow",
+    "body": [
+      "const ${1:name} = (${2:args}): ${3:void} => {",
+      "  ${4:return null;}",
+      "};"
+    ],
+    "description": "Arrow function"
+  },
+  "async function": {
+    "prefix": "async",
+    "body": [
+      "async function ${1:name}(${2:args}): Promise<${3:void}> {",
+      "  ${4:await null;}",
+      "}"
+    ],
+    "description": "Async function"
+  },
+  "interface": {
+    "prefix": "interface",
+    "body": [
+      "interface ${1:Name} {",
+      "  ${2:property}: ${3:string};",
+      "}"
+    ],
+    "description": "TypeScript interface"
+  },
+  "type alias": {
+    "prefix": "type",
+    "body": "type ${1:Name} = ${2:string};$0",
+    "description": "Type alias"
+  },
+  "enum": {
+    "prefix": "enum",
+    "body": [
+      "enum ${1:Name} {",
+      "  ${2:A},",
+      "  ${3:B}",
+      "}"
+    ],
+    "description": "TypeScript enum"
+  },
+  "const enum": {
+    "prefix": "constenum",
+    "body": [
+      "const enum ${1:Name} {",
+      "  ${2:A} = 'a',",
+      "  ${3:B} = 'b'",
+      "}"
+    ],
+    "description": "Const enum"
+  },
+  "class": {
+    "prefix": "class",
+    "body": [
+      "class ${1:ClassName} {",
+      "  constructor(${2:args}) {",
+      "    ${3:/* init */}",
+      "  }",
+      "}"
+    ],
+    "description": "TypeScript class"
+  },
+  "class with implements": {
+    "prefix": "classimpl",
+    "body": [
+      "class ${1:ClassName} implements ${2:Interface} {",
+      "  constructor(${3:args}) {",
+      "    ${4:/* init */}",
+      "  }",
+      "}"
+    ],
+    "description": "Class with implements"
+  },
+  "generic function": {
+    "prefix": "genfn",
+    "body": [
+      "function ${1:name}<T>(arg: T): T {",
+      "  ${2:return arg;}",
+      "}"
+    ],
+    "description": "Generic function"
+  },
+  "generic interface": {
+    "prefix": "genint",
+    "body": [
+      "interface ${1:Name}<T> {",
+      "  ${2:property}: T;",
+      "}"
+    ],
+    "description": "Generic interface"
+  },
+  "namespace": {
+    "prefix": "namespace",
+    "body": [
+      "namespace ${1:Name} {",
+      "  ${2:/* code */}",
+      "}"
+    ],
+    "description": "Namespace"
+  },
+  "module": {
+    "prefix": "module",
+    "body": [
+      "module ${1:Name} {",
+      "  ${2:/* code */}",
+      "}"
+    ],
+    "description": "Module"
+  },
+  "import": {
+    "prefix": "import",
+    "body": "import { ${1:${2:type}} } from '${3:module}';$0",
+    "description": "Import statement"
+  },
+  "export": {
+    "prefix": "export",
+    "body": "export { ${1:type} } from '${2:module}';$0",
+    "description": "Export from"
+  },
+  "export type": {
+    "prefix": "exporttype",
+    "body": "export type { ${1:Type} } from '${2:module}';$0",
+    "description": "Export type"
+  },
+  "type guard": {
+    "prefix": "is",
+    "body": [
+      "function is${1:Type}(value: unknown): value is ${1:Type} {",
+      "  return ${2:/* check */}",
+      "}"
+    ],
+    "description": "Type guard"
+  },
+  "readonly": {
+    "prefix": "readonly",
+    "body": "readonly ${1:property}: ${2:string};$0",
+    "description": "Readonly property"
+  },
+  "private constructor": {
+    "prefix": "privatec",
+    "body": [
+      "private constructor(${1:args}) {",
+      "  ${2:/* init */}",
+      "}"
+    ],
+    "description": "Private constructor"
+  },
+  "static": {
+    "prefix": "static",
+    "body": [
+      "static ${1:method}(${2:args}) {",
+      "  ${3:/* code */}",
+      "}"
+    ],
+    "description": "Static method"
+  },
+  "getter": {
+    "prefix": "get",
+    "body": [
+      "get ${1:property}(): ${2:string} {",
+      "  return this._${1:property};",
+      "}"
+    ],
+    "description": "Getter"
+  },
+  "setter": {
+    "prefix": "set",
+    "body": [
+      "set ${1:property}(value: ${2:string}) {",
+      "  this._${1:property} = value;",
+      "}"
+    ],
+    "description": "Setter"
+  },
+  "optional": {
+    "prefix": "?",
+    "body": "${1:prop}?: ${2:string}$0",
+    "description": "Optional property"
+  },
+  "try catch": {
+    "prefix": "trycatch",
+    "body": [
+      "try {",
+      "  ${1:/* code */}",
+      "} catch (error) {",
+      "  if (error instanceof ${2:Error}) {",
+      "    ${3:console.error(error.message);}",
+      "  }",
+      "}"
+    ],
+    "description": "Try-catch with type narrowing"
+  },
+  "keyof": {
+    "prefix": "keyof",
+    "body": "keyof ${1:Type};$0",
+    "description": "Keyof operator"
+  },
+  "typeof": {
+    "prefix": "typeof",
+    "body": "typeof ${1:value};$0",
+    "description": "Typeof operator"
+  },
+  "Partial": {
+    "prefix": "partial",
+    "body": "Partial<${1:Type}>;$0",
+    "description": "Partial utility type"
+  },
+  "Required": {
+    "prefix": "required",
+    "body": "Required<${1:Type}>;$0",
+    "description": "Required utility type"
+  },
+  "Pick": {
+    "prefix": "pick",
+    "body": "Pick<${1:Type}, '${2:key}'>;$0",
+    "description": "Pick utility type"
+  },
+  "Omit": {
+    "prefix": "omit",
+    "body": "Omit<${1:Type}, '${2:key}'>;$0",
+    "description": "Omit utility type"
+  },
+  "Record": {
+    "prefix": "record",
+    "body": "Record<${1:string}, ${2:unknown}>;$0",
+    "description": "Record utility type"
+  }
+}

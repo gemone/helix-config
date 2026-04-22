@@ -1,0 +1,210 @@
+{
+  "main function": {
+    "prefix": "main",
+    "body": [
+      "int main(int argc, char *argv[]) {",
+      "    ${1:/* code */}",
+      "    return 0;",
+      "}"
+    ],
+    "description": "C main function"
+  },
+  "function": {
+    "prefix": "fn",
+    "body": [
+      "${1:void} ${2:name}(${3:args}) {",
+      "    ${4:/* code */}",
+      "}"
+    ],
+    "description": "C function"
+  },
+  "printf": {
+    "prefix": "printf",
+    "body": "printf(\"${1:format}\\n\"${2:, arg});$0",
+    "description": "Printf statement"
+  },
+  "scanf": {
+    "prefix": "scanf",
+    "body": "scanf(\"${1:format}\", &${2:var});$0",
+    "description": "Scanf statement"
+  },
+  "if": {
+    "prefix": "if",
+    "body": [
+      "if (${1:condition}) {",
+      "    ${2:/* code */}",
+      "}"
+    ],
+    "description": "If statement"
+  },
+  "if else": {
+    "prefix": "ifelse",
+    "body": [
+      "if (${1:condition}) {",
+      "    ${2:/* code */}",
+      "} else {",
+      "    ${3:/* code */}",
+      "}"
+    ],
+    "description": "If-else statement"
+  },
+  "for loop": {
+    "prefix": "for",
+    "body": [
+      "for (int ${1:i} = 0; ${1:i} < ${2:n}; ${1:i}++) {",
+      "    ${3:/* code */}",
+      "}"
+    ],
+    "description": "For loop"
+  },
+  "while loop": {
+    "prefix": "while",
+    "body": [
+      "while (${1:condition}) {",
+      "    ${2:/* code */}",
+      "}"
+    ],
+    "description": "While loop"
+  },
+  "do while": {
+    "prefix": "dowhile",
+    "body": [
+      "do {",
+      "    ${1:/* code */}",
+      "} while (${2:condition});"
+    ],
+    "description": "Do-while loop"
+  },
+  "switch": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:expr}) {",
+      "case ${2:val}:",
+      "    ${3:/* code */}",
+      "    break;",
+      "default:",
+      "    ${4:/* code */}",
+      "    break;",
+      "}"
+    ],
+    "description": "Switch statement"
+  },
+  "struct": {
+    "prefix": "struct",
+    "body": [
+      "struct ${1:Name} {",
+      "    ${2:int field;}",
+      "};$0"
+    ],
+    "description": "Struct definition"
+  },
+  "typedef struct": {
+    "prefix": "typedef",
+    "body": [
+      "typedef struct {",
+      "    ${1:int field;}",
+      "} ${2:Name};"
+    ],
+    "description": "Typedef struct"
+  },
+  "enum": {
+    "prefix": "enum",
+    "body": [
+      "enum ${1:Name} {",
+      "    ${2:A},",
+      "    ${3:B}",
+      "};$0"
+    ],
+    "description": "Enum definition"
+  },
+  "union": {
+    "prefix": "union",
+    "body": [
+      "union ${1:Name} {",
+      "    ${2:int i;}",
+      "    ${3:float f;}",
+      "};$0"
+    ],
+    "description": "Union definition"
+  },
+  "pointer function": {
+    "prefix": "pfn",
+    "body": [
+      "${1:void} (*${2:func})(${3:void}) = ${4:NULL};",
+      "$0"
+    ],
+    "description": "Pointer to function"
+  },
+  "include": {
+    "prefix": "inc",
+    "body": "#include <${1:stdio.h}>$0",
+    "description": "Include directive"
+  },
+  "include custom": {
+    "prefix": "incc",
+    "body": "#include \"${1:header.h}\"$0",
+    "description": "Include custom header"
+  },
+  "define": {
+    "prefix": "def",
+    "body": "#define ${1:NAME} ${2:value}$0",
+    "description": "Define macro"
+  },
+  "ifdef": {
+    "prefix": "ifdef",
+    "body": [
+      "#ifdef ${1:FLAG}",
+      "    ${2:/* code */}",
+      "#endif"
+    ],
+    "description": "Ifdef block"
+  },
+  "malloc": {
+    "prefix": "malloc",
+    "body": "${1:type} *${2:ptr} = (${1:type} *)malloc(sizeof(${1:type}) * ${3:1});$0",
+    "description": "Malloc allocation"
+  },
+  "free": {
+    "prefix": "free",
+    "body": "free(${1:ptr});\n${1:ptr} = NULL;$0",
+    "description": "Free memory"
+  },
+  "sizeof": {
+    "prefix": "sizeof",
+    "body": "sizeof(${1:type})$0",
+    "description": "Sizeof operator"
+  },
+  "ternary": {
+    "prefix": "tern",
+    "body": "${1:cond} ? ${2:a} : ${3:b}$0",
+    "description": "Ternary operator"
+  },
+  "static": {
+    "prefix": "static",
+    "body": "static ${1:int} ${2:var};$0",
+    "description": "Static variable"
+  },
+  "const": {
+    "prefix": "const",
+    "body": "const ${1:int} ${2:var} = ${3:0};$0",
+    "description": "Const variable"
+  },
+  "comment block": {
+    "prefix": "/*",
+    "body": [
+      "/*",
+      " * ${1:comment}",
+      " */"
+    ],
+    "description": "Block comment"
+  },
+  "test": {
+    "prefix": "test",
+    "body": [
+      "void test_${1:name}(void) {",
+      "    ${2:/* code */}",
+      "}"
+    ],
+    "description": "Test function"
+  }
+}

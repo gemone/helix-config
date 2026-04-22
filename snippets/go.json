@@ -1,0 +1,67 @@
+{
+  "function": {
+    "prefix": "func",
+    "body": ["func ${1:name}(${2:args}) ${3:error} {", "\t${4:return nil}", "}"],
+    "description": "Go function"
+  },
+  "main function": {
+    "prefix": "main",
+    "body": ["func main() {", "\t${1:fmt.Println(\"Hello, World!\")}", "}"],
+    "description": "Go main function"
+  },
+  "struct": {
+    "prefix": "type",
+    "body": ["type ${1:Name} struct {", "\t${2:field} ${3:string}", "}"],
+    "description": "Go struct"
+  },
+  "interface": {
+    "prefix": "interface",
+    "body": ["type ${1:Name} interface {", "\t${2:Method()} ${3:error}", "}"],
+    "description": "Go interface"
+  },
+  "error handling": {
+    "prefix": "iferr",
+    "body": ["if err != nil {", "\t\treturn ${1:nil}, ${2:err}", "}"],
+    "description": "Go error handling"
+  },
+  "context with timeout": {
+    "prefix": "ctx",
+    "body": ["ctx, cancel := context.WithTimeout(context.Background(), ${1:30 * time.Second})", "defer cancel()", "$0"],
+    "description": "Go context with timeout"
+  },
+  "goroutine": {
+    "prefix": "go func",
+    "body": ["go func(${1:args}) {", "\t${2:/* code */}", "}(${3:values})"],
+    "description": "Go goroutine"
+  },
+  "channel": {
+    "prefix": "ch",
+    "body": "ch := make(chan ${1:string}, ${2:1})$0",
+    "description": "Go channel"
+  },
+  "select": {
+    "prefix": "select",
+    "body": ["select {", "case ${1:msg} := <-${2:ch}:", "\t${3:/* handle message */}", "case <-${3:time.After}(${4:time.Second}):", "\t${5:/* timeout */}", "}"],
+    "description": "Go select statement"
+  },
+  "for range": {
+    "prefix": "forr",
+    "body": ["for ${1:k}, ${2:v} := range ${3:map} {", "\t${4:fmt.Printf(\"%v: %v\\n\", k, v)}", "}"],
+    "description": "Go for range loop"
+  },
+  "http handler": {
+    "prefix": "http",
+    "body": ["func ${1:handler}(w http.ResponseWriter, r *http.Request) {", "\t${2:fmt.Fprintf(w, \"Hello\")}", "}"],
+    "description": "Go HTTP handler"
+  },
+  "test function": {
+    "prefix": "test",
+    "body": ["func Test${1:Name}(t *testing.T) {", "\t${2:t.Parallel()}", "\t$0", "}"],
+    "description": "Go test function"
+  },
+  "table driven test": {
+    "prefix": "tabletest",
+    "body": ["func Test${1:Name}(t *testing.T) {", "\tt.Parallel()", "\ttests := []struct {", "\t\tname    string", "\t\twant    ${2:string}", "\t}{", "\t\t{name: \"test\"},", "\t}", "\tfor _, tt := range tests {", "\t\tt.Run(tt.name, func(t *testing.T) {", "\t\t\tt.Parallel()", "\t\t\t${3:/* assertion */}", "\t\t})", "\t}", "}"],
+    "description": "Go table driven test"
+  }
+}

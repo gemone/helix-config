@@ -1,0 +1,289 @@
+{
+  "main function": {
+    "prefix": "main",
+    "body": [
+      "int main(int argc, char *argv[]) {",
+      "    ${1:/* code */}",
+      "    return 0;",
+      "}"
+    ],
+    "description": "C++ main function"
+  },
+  "function": {
+    "prefix": "fn",
+    "body": [
+      "${1:void} ${2:name}(${3:args}) {",
+      "    ${4:/* code */}",
+      "}"
+    ],
+    "description": "C++ function"
+  },
+  "class": {
+    "prefix": "class",
+    "body": [
+      "class ${1:ClassName} {",
+      "public:",
+      "    ${1:ClassName}();",
+      "    ~${1:ClassName}();",
+      "private:",
+      "    ${2:/* members */}",
+      "};"
+    ],
+    "description": "C++ class"
+  },
+  "constructor": {
+    "prefix": "ctor",
+    "body": [
+      "${1:ClassName}::${1:ClassName}(${2:args}) {",
+      "    ${3:/* init */}",
+      "}"
+    ],
+    "description": "Constructor definition"
+  },
+  "destructor": {
+    "prefix": "dtor",
+    "body": [
+      "${1:ClassName}::~${1:ClassName}() {",
+      "    ${2:/* cleanup */}",
+      "}"
+    ],
+    "description": "Destructor definition"
+  },
+  "public": {
+    "prefix": "public:",
+    "body": "public:\n    ${1:/* code */}",
+    "description": "Public access specifier"
+  },
+  "private": {
+    "prefix": "private:",
+    "body": "private:\n    ${1:/* code */}",
+    "description": "Private access specifier"
+  },
+  "protected": {
+    "prefix": "protected:",
+    "body": "protected:\n    ${1:/* code */}",
+    "description": "Protected access specifier"
+  },
+  "virtual function": {
+    "prefix": "virtual",
+    "body": [
+      "virtual ${1:void} ${2:name}(${3:args}) {",
+      "    ${4:/* code */}",
+      "}"
+    ],
+    "description": "Virtual function"
+  },
+  "override": {
+    "prefix": "override",
+    "body": [
+      "void ${1:name}(${2:args}) override {",
+      "    ${3:/* code */}",
+      "}"
+    ],
+    "description": "Override function"
+  },
+  "namespace": {
+    "prefix": "namespace",
+    "body": [
+      "namespace ${1:Name} {",
+      "    ${2:/* code */}",
+      "} // namespace ${1:Name}"
+    ],
+    "description": "Namespace block"
+  },
+  "std::cout": {
+    "prefix": "cout",
+    "body": "std::cout << ${1:value} << std::endl;$0",
+    "description": "std::cout"
+  },
+  "std::cin": {
+    "prefix": "cin",
+    "body": "std::cin >> ${1:var};$0",
+    "description": "std::cin"
+  },
+  "std::string": {
+    "prefix": "string",
+    "body": "std::string ${1:s};$0",
+    "description": "std::string"
+  },
+  "std::vector": {
+    "prefix": "vector",
+    "body": "std::vector<${1:T}> ${2:v};$0",
+    "description": "std::vector"
+  },
+  "std::map": {
+    "prefix": "map",
+    "body": "std::map<${1:Key}, ${2:Value}> ${3:m};$0",
+    "description": "std::map"
+  },
+  "std::unique_ptr": {
+    "prefix": "unique",
+    "body": "std::unique_ptr<${1:T}> ${2:ptr} = std::make_unique<${1:T}>(${3:args});$0",
+    "description": "std::unique_ptr"
+  },
+  "std::shared_ptr": {
+    "prefix": "shared",
+    "body": "std::shared_ptr<${1:T}> ${2:ptr} = std::make_shared<${1:T}>(${3:args});$0",
+    "description": "std::shared_ptr"
+  },
+  "auto": {
+    "prefix": "auto",
+    "body": "auto ${1:var} = ${2:value};$0",
+    "description": "Auto variable"
+  },
+  "template": {
+    "prefix": "template",
+    "body": [
+      "template <typename ${1:T}>",
+      "${2:void} ${3:function}(${1:T} ${4:arg}) {",
+      "    ${5:/* code */}",
+      "}"
+    ],
+    "description": "Template function"
+  },
+  "template class": {
+    "prefix": "templateclass",
+    "body": [
+      "template <typename ${1:T}>",
+      "class ${2:ClassName} {",
+      "public:",
+      "    ${2:ClassName}();",
+      "private:",
+      "    ${1:T} ${3:member};",
+      "};"
+    ],
+    "description": "Template class"
+  },
+  "for range": {
+    "prefix": "forr",
+    "body": [
+      "for (const auto& ${1:item} : ${2:collection}) {",
+      "    ${3:/* code */}",
+      "}"
+    ],
+    "description": "Range-based for loop"
+  },
+  "lambda": {
+    "prefix": "lambda",
+    "body": [
+      "[${1:capture}](${2:args}) {",
+      "    ${3:return ${4:value};}",
+      "}"
+    ],
+    "description": "Lambda expression"
+  },
+  "if": {
+    "prefix": "if",
+    "body": [
+      "if (${1:condition}) {",
+      "    ${2:/* code */}",
+      "}"
+    ],
+    "description": "If statement"
+  },
+  "if else": {
+    "prefix": "ifelse",
+    "body": [
+      "if (${1:condition}) {",
+      "    ${2:/* code */}",
+      "} else {",
+      "    ${3:/* code */}",
+      "}"
+    ],
+    "description": "If-else statement"
+  },
+  "switch": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:expr}) {",
+      "case ${2:val}:",
+      "    ${3:/* code */}",
+      "    break;",
+      "default:",
+      "    ${4:/* code */}",
+      "    break;",
+      "}"
+    ],
+    "description": "Switch statement"
+  },
+  "try catch": {
+    "prefix": "trycatch",
+    "body": [
+      "try {",
+      "    ${1:/* code */}",
+      "} catch (const std::exception& ${2:e}) {",
+      "    ${3:std::cerr << e.what() << std::endl;}",
+      "}"
+    ],
+    "description": "Try-catch block"
+  },
+  "include": {
+    "prefix": "inc",
+    "body": "#include <${1:iostream}>$0",
+    "description": "Include directive"
+  },
+  "include custom": {
+    "prefix": "incc",
+    "body": "#include \"${1:header.h}\"$0",
+    "description": "Include custom header"
+  },
+  "using namespace": {
+    "prefix": "using",
+    "body": "using namespace ${1:std};$0",
+    "description": "using namespace"
+  },
+  "nullptr": {
+    "prefix": "nullptr",
+    "body": "nullptr$0",
+    "description": "nullptr"
+  },
+  "const member": {
+    "prefix": "constm",
+    "body": "const ${1:Type} ${2:name};$0",
+    "description": "Const member variable"
+  },
+  "static member": {
+    "prefix": "staticm",
+    "body": "static ${1:Type} ${2:name};$0",
+    "description": "Static member variable"
+  },
+  "friend": {
+    "prefix": "friend",
+    "body": "friend class ${1:ClassName};$0",
+    "description": "Friend declaration"
+  },
+  "explicit": {
+    "prefix": "explicit",
+    "body": "explicit ${1:ClassName}(${2:args});$0",
+    "description": "Explicit constructor"
+  },
+  "inline": {
+    "prefix": "inline",
+    "body": "inline ${1:void} ${2:name}(${3:args}) { ${4:/* code */} }",
+    "description": "Inline function"
+  },
+  "new delete": {
+    "prefix": "newd",
+    "body": [
+      "${1:T}* ${2:ptr} = new ${1:T}(${3:args});",
+      "// ... use ptr ...",
+      "delete ${2:ptr};",
+      "${2:ptr} = nullptr;"
+    ],
+    "description": "New and delete"
+  },
+  "RAII": {
+    "prefix": "raii",
+    "body": [
+      "class ${1:RAII} {",
+      "    ${2:Resource} m_resource;",
+      "public:",
+      "    ${1:RAII}(${2:Resource} r) : m_resource(r) {}",
+      "    ~${1:RAII}() {",
+      "        ${3:/* cleanup */}",
+      "    }",
+      "};"
+    ],
+    "description": "RAII wrapper class"
+  }
+}

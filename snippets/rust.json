@@ -1,0 +1,97 @@
+{
+  "function": {
+    "prefix": "fn",
+    "body": ["fn ${1:name}(${2:args}) ${3:-> ${4:()}} {", "    ${5:todo!()}", "}"],
+    "description": "Rust function"
+  },
+  "main": {
+    "prefix": "main",
+    "body": ["fn main() {", "    ${1:println!(\"Hello, world!\");}", "}"],
+    "description": "Rust main function"
+  },
+  "struct": {
+    "prefix": "struct",
+    "body": ["struct ${1:Name} {", "    ${2:field}: ${3:String},", "}"],
+    "description": "Rust struct"
+  },
+  "impl": {
+    "prefix": "impl",
+    "body": ["impl ${1:Type} {", "    fn ${2:method}(${3:&self}) ${4:-> ${5:()}} {", "        ${6:todo!()}", "    }", "}"],
+    "description": "Rust impl block"
+  },
+  "trait": {
+    "prefix": "trait",
+    "body": ["trait ${1:Name} {", "    fn ${2:method}(${3:&self}) ${4:-> ${5:()}};", "}"],
+    "description": "Rust trait"
+  },
+  "enum": {
+    "prefix": "enum",
+    "body": ["enum ${1:Name} {", "    ${2:Variant},", "}"],
+    "description": "Rust enum"
+  },
+  "match": {
+    "prefix": "match",
+    "body": ["match ${1:value} {", "    ${2:Some(value)} => ${3:println!(\"{:?}\", value),", "    ${4:None} => ${5:()},", "}"],
+    "description": "Rust match expression"
+  },
+  "if let": {
+    "prefix": "iflet",
+    "body": "if let ${1:Some(value)} = ${2:optional} {\n    ${3:println!(\"{:?}\", value);}\n}$0",
+    "description": "Rust if let"
+  },
+  "loop": {
+    "prefix": "loop",
+    "body": ["loop {", "    ${1:break;", "}"],
+    "description": "Rust infinite loop"
+  },
+  "for in": {
+    "prefix": "forin",
+    "body": "for ${1:item} in ${2:iterable} {\n    ${3:println!(\"{:?}\", item);}\n}$0",
+    "description": "Rust for-in loop"
+  },
+  "Result handling": {
+    "prefix": "result",
+    "body": ["match ${1:result} {", "    Ok(value) => ${2:println!(\"{:?}\", value),", "    Err(e) => ${3:return Err(e),", "}"],
+    "description": "Rust Result handling"
+  },
+  "Option handling": {
+    "prefix": "option",
+    "body": ["match ${1:option} {", "    Some(value) => ${2:value},", "    None => ${3:return None,", "}"],
+    "description": "Rust Option handling"
+  },
+  "Vec": {
+    "prefix": "vec",
+    "body": ["let mut ${1:vec} = Vec::new();", "$0"],
+    "description": "Rust Vec creation"
+  },
+  "HashMap": {
+    "prefix": "hashmap",
+    "body": ["use std::collections::HashMap;", "", "let mut ${1:map} = HashMap::new();", "$0"],
+    "description": "Rust HashMap"
+  },
+  "test module": {
+    "prefix": "test",
+    "body": ["#[cfg(test)]", "mod tests {", "    use super::*;", "", "    #[test]", "    fn ${1:test_name}() {", "        ${2:assert_eq!(1, 1);}", "    }", "}"],
+    "description": "Rust test module"
+  },
+  "test function": {
+    "prefix": "#[test]",
+    "body": ["#[test]", "fn ${1:test_name}() {", "    ${2:assert_eq!(1, 1);}", "}"],
+    "description": "Rust test function"
+  },
+  "macro_rules": {
+    "prefix": "macro",
+    "body": ["macro_rules! ${1:name} {", "    (${2:$($arg:expr),*}) => {", "        ${3:println!(\"{:?}\", ($($arg),*));}", "    };", "}"],
+    "description": "Rust macro_rules"
+  },
+  "async fn": {
+    "prefix": "async fn",
+    "body": ["async fn ${1:name}(${2:args}) ${3:-> ${4:Result<(), Box<dyn std::error::Error>>>} {", "    ${5:todo!()}", "}"],
+    "description": "Rust async function"
+  },
+  "closure": {
+    "prefix": "||",
+    "body": "|${1:x}| ${2:x + 1}$0",
+    "description": "Rust closure"
+  }
+}

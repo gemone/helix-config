@@ -1,0 +1,148 @@
+# Language Server Configurations
+
+[language-server.pylsp]
+command = "pylsp"
+args = []
+timeout = 30
+
+[language-server.pyright]
+command = "pyright-langserver"
+args = ["--stdio"]
+timeout = 30
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+timeout = 30
+
+[language-server.gopls]
+command = "gopls"
+args = []
+timeout = 30
+
+[language-server.rust-analyzer]
+command = "/opt/homebrew/bin/rust-analyzer"
+args = []
+timeout = 30
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+timeout = 30
+
+[language-server.vue-language-server]
+command = "vue-language-server"
+args = ["--stdio"]
+timeout = 60
+required-root-patterns = ["package.json", "vite.config.*", "vue.config.js"]
+
+[language-server.angular-language-server]
+command = "ngserver"
+args = ["--stdio", "--tsProbeLocations", ".", "--ngProbeLocations", "."]
+timeout = 60
+required-root-patterns = ["angular.json"]
+
+[language-server.vscode-html-language-server]
+command = "vscode-html-language-server"
+args = ["--stdio"]
+timeout = 60
+
+[language-server.clangd]
+command = "clangd"
+args = ["--background-index"]
+timeout = 30
+
+[language-server.helix-assist]
+command = "helix-assist"
+args = ["--handler", "anthropic", "--num-suggestions", "2"]
+timeout = 60
+
+[language-server.hx-lsp]
+command = "hx-lsp"
+args = []
+timeout = 30
+
+# Language Configurations
+
+[[language]]
+name = "python"
+scope = "source.python"
+file-types = ["py", "pyi", "py3", "pyw", "ptl", "rpy", "cpy", "ipy", "pyt", { glob = ".python_history" }, { glob = ".pythonstartup" }, { glob = ".pythonrc" }, { glob = "*SConstruct" }, { glob = "*SConscript" }, { glob = "*sconstruct" }]
+language-servers = [
+  { name = "pyright", except-features = ["format"] },
+  { name = "ruff", only-features = ["diagnostics", "format", "code-action"] },
+  "hx-lsp",
+  "helix-assist",
+]
+
+[[language]]
+name = "go"
+scope = "source.go"
+file-types = ["go"]
+language-servers = ["gopls", "hx-lsp", "helix-assist"]
+
+[[language]]
+name = "rust"
+scope = "source.rust"
+file-types = ["rs"]
+language-servers = ["rust-analyzer", "hx-lsp", "helix-assist"]
+
+[[language]]
+name = "javascript"
+scope = "source.js"
+file-types = ["js", "mjs", "cjs", "rules", "es6", "pac", "gs", { glob = ".node_repl_history" }, { glob = "jakefile" }]
+language-servers = ["typescript-language-server", "hx-lsp", "helix-assist"]
+
+[[language]]
+name = "typescript"
+scope = "source.ts"
+file-types = ["ts", "mts", "cts"]
+language-servers = ["typescript-language-server", "angular-language-server", "hx-lsp", "helix-assist"]
+
+[[language]]
+name = "jsx"
+scope = "source.jsx"
+file-types = ["jsx"]
+language-servers = ["typescript-language-server", "hx-lsp", "helix-assist"]
+
+[[language]]
+name = "tsx"
+scope = "source.tsx"
+file-types = ["tsx"]
+language-servers = ["typescript-language-server", "hx-lsp", "helix-assist"]
+
+[[language]]
+name = "vue"
+scope = "source.vue"
+file-types = ["vue"]
+language-servers = ["vue-language-server", "hx-lsp", "helix-assist"]
+
+[[language]]
+name = "html"
+scope = "text.html.basic"
+file-types = ["html", "htm", "shtml", "xhtml", "xht", "jsp", "asp", "aspx", "jshtm", "volt", "rhtml", "cshtml"]
+language-servers = ["vscode-html-language-server", "angular-language-server"]
+
+[[language]]
+name = "c"
+scope = "source.c"
+file-types = ["c"]
+language-servers = ["clangd", "hx-lsp", "helix-assist"]
+
+[[language]]
+name = "cpp"
+scope = "source.cpp"
+file-types = ["cc", "hh", "c++", "cpp", "hpp", "h", "ipp", "tpp", "cxx", "hxx", "ixx", "txx", "ino", "C", "H", "cu", "cuh", "cppm", "h++", "ii", "inl", { glob = ".hpp.in" }, { glob = ".h.in" }]
+language-servers = ["clangd", "hx-lsp", "helix-assist"]
+
+[[language]]
+name = "objc"
+scope = "source.objc"
+file-types = ["m", "mm", "h"]
+language-servers = ["clangd", "hx-lsp", "helix-assist"]
+
+[[language]]
+name = "markdown"
+scope = "text.markdown"
+file-types = ["md", "livemd", "markdown", "mdx", "mkd", "mkdn", "mdwn", "mdown", "markdn", "mdtxt", "mdtext", "workbook", { glob = "PULLREQ_EDITMSG" }]
+language-servers = ["hx-lsp"]

@@ -1,0 +1,258 @@
+{
+  "function": {
+    "prefix": "fn",
+    "body": [
+      "function ${1:name}(${2:args}) {",
+      "  ${3:return null;}",
+      "}"
+    ],
+    "description": "JavaScript function"
+  },
+  "arrow function": {
+    "prefix": "arrow",
+    "body": [
+      "const ${1:name} = (${2:args}) => {",
+      "  ${3:return null;}",
+      "};"
+    ],
+    "description": "Arrow function"
+  },
+  "async function": {
+    "prefix": "async",
+    "body": [
+      "async function ${1:name}(${2:args}) {",
+      "  ${3:await null;}",
+      "}"
+    ],
+    "description": "Async function"
+  },
+  "async arrow": {
+    "prefix": "asyncawait",
+    "body": [
+      "const ${1:name} = async (${2:args}) => {",
+      "  ${3:await null;}",
+      "};"
+    ],
+    "description": "Async arrow function"
+  },
+  "class": {
+    "prefix": "class",
+    "body": [
+      "class ${1:ClassName} {",
+      "  constructor(${2:args}) {",
+      "    ${3:/* init */}",
+      "  }",
+      "}"
+    ],
+    "description": "JavaScript class"
+  },
+  "constructor": {
+    "prefix": "ctor",
+    "body": [
+      "constructor(${1:args}) {",
+      "  ${2:this.init();}",
+      "}"
+    ],
+    "description": "Constructor"
+  },
+  "export default": {
+    "prefix": "export",
+    "body": "export default ${1:name};$0",
+    "description": "Export default"
+  },
+  "export named": {
+    "prefix": "exportn",
+    "body": "export const ${1:name} = ${2:value};$0",
+    "description": "Export named"
+  },
+  "import": {
+    "prefix": "import",
+    "body": "import ${1:{ ${2:stuff} }} from '${3:module}';$0",
+    "description": "Import statement"
+  },
+  "require": {
+    "prefix": "require",
+    "body": "const ${1:name} = require('${2:module}');$0",
+    "description": "Require statement"
+  },
+  "if statement": {
+    "prefix": "if",
+    "body": [
+      "if (${1:condition}) {",
+      "  ${2:/* code */}",
+      "}"
+    ],
+    "description": "If statement"
+  },
+  "if else": {
+    "prefix": "ifelse",
+    "body": [
+      "if (${1:condition}) {",
+      "  ${2:/* code */}",
+      "} else {",
+      "  ${3:/* code */}",
+      "}"
+    ],
+    "description": "If-else statement"
+  },
+  "for loop": {
+    "prefix": "for",
+    "body": [
+      "for (let ${1:i} = 0; ${1:i} < ${2:length}; ${1:i}++) {",
+      "  ${3:/* code */}",
+      "}"
+    ],
+    "description": "For loop"
+  },
+  "forEach": {
+    "prefix": "foreach",
+    "body": "${1:array}.forEach((${2:item}) => {\n  ${3:/* code */}\n});$0",
+    "description": "forEach loop"
+  },
+  "for of": {
+    "prefix": "forof",
+    "body": [
+      "for (const ${1:item} of ${2:array}) {",
+      "  ${3:/* code */}",
+      "}"
+    ],
+    "description": "For-of loop"
+  },
+  "while loop": {
+    "prefix": "while",
+    "body": [
+      "while (${1:condition}) {",
+      "  ${2:/* code */}",
+      "}"
+    ],
+    "description": "While loop"
+  },
+  "switch": {
+    "prefix": "switch",
+    "body": [
+      "switch (${1:value}) {",
+      "  case ${2:condition}:",
+      "    ${3:/* code */}",
+      "    break;",
+      "  default:",
+      "    ${4:/* code */}",
+      "}"
+    ],
+    "description": "Switch statement"
+  },
+  "try catch": {
+    "prefix": "trycatch",
+    "body": [
+      "try {",
+      "  ${1:/* code */}",
+      "} catch (${2:error}) {",
+      "  ${3:console.error(error);}",
+      "}"
+    ],
+    "description": "Try-catch"
+  },
+  "promise": {
+    "prefix": "promise",
+    "body": [
+      "new Promise((resolve, reject) => {",
+      "  ${1:/* code */}",
+      "  resolve(${2:value});",
+      "})"
+    ],
+    "description": "Promise"
+  },
+  "async await": {
+    "prefix": "await",
+    "body": [
+      "const ${1:result} = await ${2:promise};",
+      "$0"
+    ],
+    "description": "Await statement"
+  },
+  "console.log": {
+    "prefix": "log",
+    "body": "console.log(${1:value});$0",
+    "description": "Console log"
+  },
+  "console.error": {
+    "prefix": "error",
+    "body": "console.error(${1:value});$0",
+    "description": "Console error"
+  },
+  "module.exports": {
+    "prefix": "module",
+    "body": "module.exports = { ${1:name} };$0",
+    "description": "Module exports"
+  },
+  "object method": {
+    "prefix": "method",
+    "body": [
+      "${1:methodName}(${2:args}) {",
+      "  ${3:/* code */}",
+      "}"
+    ],
+    "description": "Object method"
+  },
+  "getter": {
+    "prefix": "get",
+    "body": [
+      "get ${1:property}() {",
+      "  return this._${1:property};",
+      "}"
+    ],
+    "description": "Getter"
+  },
+  "setter": {
+    "prefix": "set",
+    "body": [
+      "set ${1:property}(${2:value}) {",
+      "  this._${1:property} = ${2:value};",
+      "}"
+    ],
+    "description": "Setter"
+  },
+  "test": {
+    "prefix": "test",
+    "body": [
+      "test('${1:description}', async () => {",
+      "  ${2:expect(true).toBe(true);}",
+      "});"
+    ],
+    "description": "Jest test"
+  },
+  "describe": {
+    "prefix": "describe",
+    "body": [
+      "describe('${1:suite}', () => {",
+      "  ${2:test('${3:case}', () => {});}",
+      "});"
+    ],
+    "description": "Jest describe"
+  },
+  "react functional component": {
+    "prefix": "rfc",
+    "body": [
+      "export function ${1:ComponentName}({ ${2:props} }) {",
+      "  return (",
+      "    <div>${3:/* content */}</div>",
+      "  );",
+      "}"
+    ],
+    "description": "React functional component"
+  },
+  "react useState": {
+    "prefix": "usestate",
+    "body": "const [${1:state}, set${1:State}] = useState(${2:initialValue});$0",
+    "description": "React useState hook"
+  },
+  "react useEffect": {
+    "prefix": "useeffect",
+    "body": [
+      "useEffect(() => {",
+      "  ${1:/* effect */}",
+      "  return () => { ${2:/* cleanup */} };",
+      "}, [${3:/* deps */}]);"
+    ],
+    "description": "React useEffect hook"
+  }
+}

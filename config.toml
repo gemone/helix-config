@@ -1,0 +1,52 @@
+theme = "catppuccin_mocha"
+
+# Helix Editor Configuration
+
+[editor]
+line-number = "relative"
+mouse = true
+scroll-lines = 3
+bufferline = "multiple"
+cursorline = true
+color-modes = true
+middle-click-paste = false
+auto-completion = true
+completion-timeout = 120
+completion-trigger-len = 1
+preview-completion-insert = true
+auto-info = true
+path-completion = true
+auto-pairs = true
+idle-timeout = 500
+
+[editor.cursor-shape]
+normal = "block"
+insert = "bar"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-name", "file-modification-indicator"]
+center = []
+right = ["diagnostics", "selections", "position", "file-type"]
+separator = "│"
+
+[editor.soft-wrap]
+enable = true
+wrap-indicator = "↪ "
+
+[editor.indent-guides]
+render = true
+character = "╎"
+skip-levels = 1
+
+[editor.lsp]
+enable = true
+display-messages = true
+display-progress-messages = true
+auto-signature-help = true
+display-signature-help-docs = true
+display-inlay-hints = true
+snippets = true
