@@ -36,10 +36,17 @@ args = ["--stdio"]
 timeout = 60
 required-root-patterns = ["package.json", "vite.config.*", "vue.config.js"]
 
-[language-server.angular-language-server]
-command = "ngserver"
-args = ["--stdio", "--tsProbeLocations", ".", "--ngProbeLocations", "."]
-timeout = 60
+[language-server.angular-ls]
+command = "/Users/muk/.config/helix/config/hx-expand-argv"
+args = [
+  "ngserver",
+  "--ngProbeLocations",
+  "$(npm -g root),$(pwd)/node_modules",
+  "--tsProbeLocations",
+  "$(npm -g root),$(pwd)/node_modules",
+  "--stdio",
+]
+file-types = ["ts", "typescript", "html"]
 required-root-patterns = ["angular.json"]
 
 [language-server.vscode-html-language-server]
@@ -97,7 +104,7 @@ language-servers = ["typescript-language-server", "hx-lsp", "helix-assist"]
 name = "typescript"
 scope = "source.ts"
 file-types = ["ts", "mts", "cts"]
-language-servers = ["typescript-language-server", "angular-language-server", "hx-lsp", "helix-assist"]
+language-servers = ["angular-ls", "typescript-language-server"]
 
 [[language]]
 name = "jsx"
@@ -121,7 +128,7 @@ language-servers = ["vue-language-server", "hx-lsp", "helix-assist"]
 name = "html"
 scope = "text.html.basic"
 file-types = ["html", "htm", "shtml", "xhtml", "xht", "jsp", "asp", "aspx", "jshtm", "volt", "rhtml", "cshtml"]
-language-servers = ["vscode-html-language-server", "angular-language-server"]
+language-servers = ["angular-ls", "vscode-html-language-server"]
 
 [[language]]
 name = "c"

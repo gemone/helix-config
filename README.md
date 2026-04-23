@@ -173,6 +173,16 @@ go install github.com/leona/helix-assist/cmd/helix-assist@latest
 npm install -g typescript typescript-language-server @vue/language-server @angular/language-server vscode-langservers-extracted
 ```
 
+当前 Angular LSP 参考了 helix-editor/helix#4861 的配置，使用：
+
+```toml
+[language-server.angular-language-server]
+command = "/Users/muk/.config/helix/config/hx-expand-argv"
+args = ["ngserver", "--stdio", "--tsProbeLocations", "$(npm -g root)", "--ngProbeLocations", "$(npm -g root)"]
+```
+
+原因是 **Helix 不会对 language-server 的 `args` 做 shell 展开**，`$(npm -g root)` 会被原样传给进程。当前配置用 `config/hx-expand-argv` 先展开 `$VAR` / `${VAR}` / `~` / `$(...)`，再真正启动 LSP，所以这套写法也能复用到别的需要动态参数的语言服务器上。
+
 ### Rust
 
 ```bash
