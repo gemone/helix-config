@@ -205,6 +205,133 @@ brew install rust-analyzer llvm
 emerge dev-util/rust-analyzer sys-devel/llvm
 ```
 
+## 可选扩展 / 插件生态
+
+### 先说限制
+
+当前这份配置基于 **Homebrew 的正式版 Helix**。  
+像 `oil.hx`、`select-project.hx`、`streal.hx` 这类插件都依赖 **Steel plugin system**，也就是要换成支持插件的 Helix 分支，不能直接在当前这版里开箱即用。
+
+所以可以把它们分成两类来看：
+
+1. **Steel 插件**：需要插件版 Helix
+2. **外部工作流工具**：不改 Helix 核心，也能一起用
+
+### Steel 插件（需要插件版 Helix）
+
+#### `oil.hx`
+
+- 定位：像 `oil.nvim` 一样，把目录当成 buffer 来编辑
+- 适合：想在 Helix 里直接创建 / 重命名 / 删除文件和目录
+- 安装方式（插件版 Helix）：
+
+```bash
+forge pkg install --git https://github.com/Ra77a3l3-jar/oil.hx.git
+```
+
+`init.scm`：
+
+```scheme
+(require "oil/oil.scm")
+(oil-configure! #false #false)
+```
+
+可选键位思路：
+
+```toml
+[keys.normal.space.o]
+o = "oil"
+e = "oil-enter"
+b = "oil-back"
+g = "oil-root"
+s = "oil-save"
+r = "oil-refresh"
+q = "oil-close"
+h = "oil-toggle-hidden"
+i = "oil-toggle-git-ignored"
+```
+
+#### `select-project.hx`
+
+- 定位：模糊查找并切换项目根目录
+- 适合：经常在多个项目之间切换
+- 安装方式（插件版 Helix）：
+
+```bash
+git clone https://github.com/godalming123/select-project.hx ~/.config/helix/select-project.hx/
+```
+
+`init.scm`：
+
+```scheme
+(require "select-project.hx/main.scm")
+```
+
+键位示例：
+
+```toml
+[keys.normal.g]
+p = ":select-project"
+```
+
+#### `streal.hx`
+
+- 定位：给常用文件做数字书签，快速跳转
+- 适合：在固定几组文件之间反复切换
+- 安装方式（插件版 Helix）：
+
+```bash
+forge pkg install --git https://github.com/gllms/streal.hx.git
+```
+
+`init.scm`：
+
+```scheme
+(require "streal/streal.scm")
+```
+
+键位示例：
+
+```toml
+[keys.normal]
+"\\" = ":streal-open --per-branch"
+
+[keys.select]
+"\\" = ":streal-open --per-branch"
+```
+
+> `--per-branch` 很适合 Git 仓库：不同分支可以保留不同书签列表。
+
+### 外部工作流工具
+
+#### `Yazelix`
+
+- 定位：**Yazi + Zellij + Helix** 的一体化终端工作区
+- 适合：想把 Helix 变成 “终端 IDE” 工作流的人
+- 优点：
+  - 用 Yazi 做侧边栏 / 文件管理
+  - 用 Zellij 做 pane / workspace 编排
+  - 对 Helix 有一等支持，比如 `yzx reveal`
+  - 带 popup、命令菜单、`lazygit` 这类工作流增强
+- 安装方式：
+
+```bash
+nix profile add github:luccahuguet/yazelix#yazelix
+yzx launch
+```
+
+它不是 Helix 插件，而是 **外部工作区层**。  
+如果你本来就喜欢 tmux / zellij / yazi / lazygit 这套终端工作流，Yazelix 是最值得单独试的一项。
+
+### 推荐顺序
+
+如果只是想小步尝试：
+
+1. **先试 Yazelix**：不需要换 Helix 核心，收益最大
+2. **再考虑 `select-project.hx`**：多项目切换最直观
+3. **然后是 `streal.hx`**：常用文件跳转很顺
+4. **最后再看 `oil.hx`**：前提是你真的想把文件管理搬进 Helix
+
 ## 说明
 
 - `llvm` 包提供 `clangd`。
