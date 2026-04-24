@@ -147,6 +147,7 @@ Helix 里有三层常用概念，最好分开记：
 | `ngserver` | Angular LSP | `npm install -g @angular/language-server` |
 | `vscode-html-language-server` | HTML LSP | `npm install -g vscode-langservers-extracted` |
 | `clangd` | C/C++/Objective-C LSP | 见下方各平台命令 |
+| `hx-exec` | 跨平台命令别名 / 参数展开 | `cargo install --git https://github.com/gemone/hx-exec` |
 | `hx-lsp` | Helix 扩展 LSP | `cargo install --git https://github.com/helix-editor/hx-lsp` |
 | `helix-assist` | Helix 辅助能力 | `go install github.com/leona/helix-assist/cmd/helix-assist@latest` |
 
@@ -173,20 +174,45 @@ go install github.com/leona/helix-assist/cmd/helix-assist@latest
 npm install -g typescript typescript-language-server @vue/language-server @angular/language-server vscode-langservers-extracted
 ```
 
-当前 Angular LSP 参考了 helix-editor/helix#4861 的配置，使用：
+当前 Angular LSP 通过 [gemone/hx-exec](https://github.com/gemone/hx-exec) 启动。`hx-exec` 是一个跨平台命令启动器，专门为 Helix 的 LSP / 外部工具提供参数展开和多平台别名能力。
+
+**为什么需要它**：Helix 不会对 language-server 的 `args` 做 shell 展开，`$(npm -g root)` 会被原样传给进程。`hx-exec` 会在启动前展开 `${VAR}` / `$(cmd)` 等语法，还能按 OS 选择不同的变体，一套 `hx-exec.toml` 同时覆盖 Windows / macOS / Linux。
+
+`languages.toml` 中的配置：
 
 ```toml
-[language-server.angular-language-server]
-command = "/Users/muk/.config/helix/config/hx-expand-argv"
-args = ["ngserver", "--stdio", "--tsProbeLocations", "$(npm -g root)", "--ngProbeLocations", "$(npm -g root)"]
+[language-server.angular-ls]
+command = "hx-exec"
+args = ["-c", "angular-lsp"]
 ```
 
-原因是 **Helix 不会对 language-server 的 `args` 做 shell 展开**，`$(npm -g root)` 会被原样传给进程。当前配置用 `config/hx-expand-argv` 先展开 `$VAR` / `${VAR}` / `~` / `$(...)`，再真正启动 LSP，所以这套写法也能复用到别的需要动态参数的语言服务器上。
+对应的 `hx-exec.toml` 别名：
+
+```toml
+[[alias.angular-lsp]]
+os = "unix"
+command = "ngserver"
+args = [
+  "--stdio",
+  "--tsProbeLocations", "${NODE_MODULES}",
+  "--ngProbeLocations", "${NODE_MODULES}",
+]
+env = { NODE_MODULES = "$(npm -g root),$(pwd)/node_modules" }
+```
+
+安装：
+
+```bash
+cargo install --git https://github.com/gemone/hx-exec
+```
+
+更多用法（预置变量、多平台变体、原生 shell 脚本等）详见 [gemone/hx-exec](https://github.com/gemone/hx-exec)。
 
 ### Rust
 
 ```bash
 cargo install --git https://github.com/helix-editor/hx-lsp
+cargo install --git https://github.com/gemone/hx-exec
 ```
 
 如果你通过 `rustup` 安装了 Rust，但 `~/.cargo/bin/rust-analyzer` 只是一个不可用的代理，Helix 里的 Rust LSP 会直接退出。当前这份配置在 macOS 上固定使用 `/opt/homebrew/bin/rust-analyzer`，因此还需要安装：
