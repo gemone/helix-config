@@ -1,11 +1,11 @@
 # hx-exec aliases for Helix
 # Alias for Angular language server: expand npm -g root into NODE_MODULES
 [[alias.angular-lsp]]
-os = "unix"
 command = "ngserver"
 args = [
   "--stdio",
   "--tsProbeLocations", "${NODE_MODULES}",
   "--ngProbeLocations", "${NODE_MODULES}",
 ]
-env = { NODE_MODULES = "$(npm -g root),$(pwd)/node_modules" }
+[alias.angular-lsp.env.NODE_MODULES]
+cmd = "npm -g root"
