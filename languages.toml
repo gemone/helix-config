@@ -37,15 +37,8 @@ timeout = 60
 required-root-patterns = ["package.json", "vite.config.*", "vue.config.js"]
 
 [language-server.angular-ls]
-command = "/Users/muk/.config/helix/config/hx-expand-argv"
-args = [
-  "ngserver",
-  "--ngProbeLocations",
-  "$(npm -g root),$(pwd)/node_modules",
-  "--tsProbeLocations",
-  "$(npm -g root),$(pwd)/node_modules",
-  "--stdio",
-]
+command = "hx-exec"
+args = ["-c", "angular-lsp"]
 file-types = ["ts", "typescript", "html"]
 required-root-patterns = ["angular.json"]
 
