@@ -21,7 +21,7 @@ args = []
 timeout = 30
 
 [language-server.rust-analyzer]
-command = "/opt/homebrew/bin/rust-analyzer"
+command = "rust-analyzer"
 args = []
 timeout = 30
 
