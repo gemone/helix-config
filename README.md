@@ -189,15 +189,14 @@ args = ["-c", "angular-lsp"]
 对应的 `hx-exec.toml` 别名：
 
 ```toml
-[[alias.angular-lsp]]
-os = "unix"
+[alias.angular-lsp]
 command = "ngserver"
 args = [
   "--stdio",
-  "--tsProbeLocations", "${NODE_MODULES}",
-  "--ngProbeLocations", "${NODE_MODULES}",
+  "--tsProbeLocations", "${NODE_MODULES}/typescript/lib",
+  "--ngProbeLocations", "${NODE_MODULES}/@angular/language-server/bin",
 ]
-env = { NODE_MODULES = "$(npm -g root),$(pwd)/node_modules" }
+env.NODE_MODULES = { cmd = "npm root -g" }
 ```
 
 安装：
